@@ -83,14 +83,25 @@ img{max-width:100%;display:block}
 
 /* header */
 header{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;max-width:1000px;margin:0 auto}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;max-width:1000px;margin:0 auto}
 .brand{font-weight:700;letter-spacing:.01em;white-space:nowrap;text-decoration:none;color:var(--ink)}
 .brand b{color:var(--gold)}
 .nav .links{display:none;gap:20px;font-weight:500;font-size:.92rem}
 .nav .links a{color:var(--muted);text-decoration:none}
 .nav .links a:hover{color:var(--ink)}
-@media(min-width:860px){.nav .links{display:flex}}
+@media(min-width:900px){.nav .links{display:flex}}
 .nav .btn{padding:9px 18px;font-size:.94rem}
+.nav .right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;gap:1px}
+.lang button{background:none;border:0;color:var(--muted);font-family:inherit;font-size:.8rem;font-weight:700;padding:4px 5px;cursor:pointer;border-radius:4px}
+.lang button:hover{color:var(--ink)}
+.lang button.active{color:var(--gold)}
+@media(max-width:480px){
+  .brand{font-size:.9rem}
+  .nav{padding:10px 12px}
+  .lang button{padding:3px 3px;font-size:.74rem}
+  .nav .btn{padding:8px 12px;font-size:.9rem}
+}
 
 /* hero */
 .hero{border-bottom:1px solid var(--line)}
@@ -211,21 +222,29 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
   <div class="nav">
     <a class="brand" href="#top">MIHAI <b>CARAPCEA</b></a>
     <nav class="links" aria-label="Navigare">
-      <a href="#poveste">Povestea</a>
-      <a href="#video">Video</a>
-      <a href="#buget">Buget</a>
-      <a href="#faq">Întrebări</a>
+      <a href="#poveste" data-i18n="nav_story">Povestea</a>
+      <a href="#video" data-i18n="nav_video">Video</a>
+      <a href="#buget" data-i18n="nav_budget">Buget</a>
+      <a href="#faq" data-i18n="nav_faq">Întrebări</a>
     </nav>
-    <a class="btn" href="#doneaza">Donează</a>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Limba paginii">
+        <button type="button" data-lang="ro">RO</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a class="btn" href="#doneaza" data-i18n="donate">Donează</a>
+    </div>
   </div>
 </header>
 
 <div class="hero" id="top">
   <div class="inner">
     <div>
-      <span class="tag">Avocatul vs Parkinson</span>
-      <h1>20 de ani a apărat oameni în instanță. Acum are nevoie ca noi să-l apărăm pe el.</h1>
-      <p class="sub">Mihai Carapcea, avocat din Brașov și tată a doi copii, are Parkinson cu debut precoce. Medicii îi recomandă <strong>urgent</strong> o operație de stimulare cerebrală profundă (DBS). Costă aproximativ <strong>100.000 €</strong>. Singur nu îi poate strânge.</p>
+      <span class="tag" data-i18n="hero_tag">Avocatul vs Parkinson</span>
+      <h1 data-i18n="hero_h1">20 de ani a apărat oameni în instanță. Acum are nevoie ca noi să-l apărăm pe el.</h1>
+      <p class="sub" data-i18n="hero_sub">Mihai Carapcea, avocat din Brașov și tată a doi copii, are Parkinson cu debut precoce. Medicii îi recomandă <strong>urgent</strong> o operație de stimulare cerebrală profundă (DBS). Costă aproximativ <strong>100.000 €</strong>. Singur nu îi poate strânge.</p>
 
       <div class="progress" id="progressBox">
         <div class="prow">
@@ -240,20 +259,20 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
       </div>
 
       <div class="cta-row">
-        <a class="btn big" href="#doneaza">Donează pentru operație</a>
+        <a class="btn big" href="#doneaza" data-i18n="cta_donate_op">Donează pentru operație</a>
         <a class="btn rev" data-cfg-link="revolut" hidden href="#">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h7.2c3.2 0 5.6 2.1 5.6 5.1 0 2.4-1.5 4.2-3.8 4.9L19.6 21h-4.1l-4.2-7.2H9.7V21H6V3zm3.7 3v4.9h3.3c1.6 0 2.6-1 2.6-2.5S14.6 6 13 6H9.7z"/></svg>
-          Donează cu Revolut
+          <span data-i18n="cta_revolut">Donează cu Revolut</span>
         </a>
-        <button class="btn ghost" id="shareHero" type="button">Distribuie</button>
+        <button class="btn ghost" id="shareHero" type="button" data-i18n="share_btn">Distribuie</button>
       </div>
 
-      <p class="trustrow">Buget public · documente medicale · apariții în presă — totul pe această pagină.</p>
+      <p class="trustrow" data-i18n="trustrow">Buget public · documente medicale · apariții în presă — totul pe această pagină.</p>
     </div>
 
     <figure class="portrait">
-      <img src="assets/portret-mihai.jpg" alt="Mihai Carapcea, avocat din Brașov" fetchpriority="high">
-      <figcaption>Mihai Carapcea · avocat · Brașov</figcaption>
+      <img src="assets/portret-mihai.jpg" alt="Mihai Carapcea" fetchpriority="high">
+      <figcaption data-i18n="portrait_cap">Mihai Carapcea · avocat · Brașov</figcaption>
     </figure>
   </div>
 </div>
@@ -261,89 +280,89 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
 <main class="wrap">
 
   <!-- VIDEO CAMPANIE -->
-  <section id="video-campanie" aria-label="Videoclipul campaniei">
-    <h2>Povestea lui, în două minute</h2>
+  <section id="video-campanie" aria-label="Video">
+    <h2 data-i18n="vc_h2">Povestea lui, în două minute</h2>
     <div id="heroVideoSlot" style="margin-top:20px">
-      <div class="hero-video">Videoclipul e în filmare și va apărea aici. Până atunci, interviurile de mai jos spun povestea.</div>
+      <div class="hero-video" data-i18n="vc_placeholder">Videoclipul e în filmare și va apărea aici. Până atunci, interviurile de mai jos spun povestea.</div>
     </div>
   </section>
 
   <!-- POVESTEA -->
   <section id="poveste">
-    <h2>Povestea mea</h2>
-    <p class="lead">În cuvintele lui Mihai.</p>
+    <h2 data-i18n="story_h2">Povestea mea</h2>
+    <p class="lead" data-i18n="story_lead">În cuvintele lui Mihai.</p>
     <div class="story">
       <div>
-        <p>Timp de 20 de ani am alergat de la o sală de judecată la alta, crezând că nimic nu mă poate opri. Apoi, la 36 de ani, viața m-a oprit cu forța. Diagnosticul: <strong>Parkinson</strong>.</p>
-        <p>Trăiesc între doze de medicamente — de 4–5 ori pe zi. Nu vindecă, doar țin simptomele în frâu câteva ore. Fiecare zi e o luptă: cu mine, cu boala, cu privirile celor din jur.</p>
-        <p>Ce nu mi-a luat boala: <strong>mintea</strong>. Iar în avocatură, mintea cântărește totul. Profesia mă ține viu, treaz, util.</p>
-        <div class="quote">„Eu am Parkinson. Dar Parkinson nu mă are pe mine."</div>
-        <a class="btn" href="#doneaza">Donează</a>
+        <p data-i18n="story_p1">Timp de 20 de ani am alergat de la o sală de judecată la alta, crezând că nimic nu mă poate opri. Apoi, la 36 de ani, viața m-a oprit cu forța. Diagnosticul: <strong>Parkinson</strong>.</p>
+        <p data-i18n="story_p2">Trăiesc între doze de medicamente — de 4–5 ori pe zi. Nu vindecă, doar țin simptomele în frâu câteva ore. Fiecare zi e o luptă: cu mine, cu boala, cu privirile celor din jur.</p>
+        <p data-i18n="story_p3">Ce nu mi-a luat boala: <strong>mintea</strong>. Iar în avocatură, mintea cântărește totul. Profesia mă ține viu, treaz, util.</p>
+        <div class="quote" data-i18n="story_quote">„Eu am Parkinson. Dar Parkinson nu mă are pe mine."</div>
+        <a class="btn" href="#doneaza" data-i18n="donate">Donează</a>
       </div>
       <div class="photo">
-        <img src="assets/birou.jpg" alt="Mihai Carapcea în biroul său de avocatură" loading="lazy">
+        <img src="assets/birou.jpg" alt="Mihai Carapcea" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- CINE E -->
   <section id="cine">
-    <h2>Cine este Mihai</h2>
-    <p class="lead">Avocat în Brașov, cu aproape 20 de ani de practică în drept bancar și protecția consumatorului.</p>
+    <h2 data-i18n="who_h2">Cine este Mihai</h2>
+    <p class="lead" data-i18n="who_lead">Avocat în Brașov, cu aproape 20 de ani de practică în drept bancar și protecția consumatorului.</p>
     <div class="grid two" style="margin-bottom:16px">
       <div class="card">
-        <h3 style="margin-top:0">Practica lui</h3>
-        <p class="muted" style="margin:0">A câștigat procese împotriva băncilor pentru oameni prinși în contracte abuzive — inclusiv la Înalta Curte de Casație și Justiție.</p>
+        <h3 style="margin-top:0" data-i18n="who_c1_h3">Practica lui</h3>
+        <p class="muted" style="margin:0" data-i18n="who_c1_p">A câștigat procese împotriva băncilor pentru oameni prinși în contracte abuzive — inclusiv la Înalta Curte de Casație și Justiție.</p>
       </div>
       <div class="card">
-        <h3 style="margin-top:0">În presă</h3>
+        <h3 style="margin-top:0" data-i18n="who_c2_h3">În presă</h3>
         <a class="pill" href="https://m.luju.ro//iccj-a-desfiintat-sesizarea-cjue-pe-prescriptie-decizie-spectaculoasa-la-inalta-curte-avocatii-vladimir-ciolacu-mihai-carapcea-si-adrian-toni-neacsu-au-reusit-imposibilul-judecatorii-iccj-maricela-cobzariu-luminita-cristiu-ninu-si-valentin-gheorghe-chitid" target="_blank" rel="noopener">luju.ro — decizie la ÎCCJ</a>
         <a class="pill" href="https://podul.ro/articol/13459/i-bncile-pierd-cateodat-victorie-uria-a-unei-romance-contra-cmtarilor-bancari-care-ii-luaser-casa-o-vanduser-la-licitaie-dar-o-scoseser-datoare-pe-via-am-pierdut-i-banii-pe-care-ii-ddusem-bncii-i-casa-m-am-trezit-i-cu-contul-blocat-i-din-tot-ce-imi-intra-33-rmanea-la-banc-pentru-casa-pierdut" target="_blank" rel="noopener">podul.ro — „Și băncile pierd câteodată"</a>
       </div>
     </div>
     <div class="gallery">
-      <figure><img src="assets/roba.jpg" alt="Mihai Carapcea în robă de avocat" loading="lazy"></figure>
-      <figure><img src="assets/justitie.jpg" alt="Mihai la Palatul de Justiție" loading="lazy"></figure>
-      <figure><img src="assets/instanta.jpg" alt="În sala de judecată" loading="lazy"></figure>
-      <figure><img src="assets/munte.jpg" alt="Mihai pe munte" loading="lazy"></figure>
+      <figure><img src="assets/roba.jpg" alt="Mihai Carapcea" loading="lazy"></figure>
+      <figure><img src="assets/justitie.jpg" alt="Palatul de Justiție" loading="lazy"></figure>
+      <figure><img src="assets/instanta.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="assets/munte.jpg" alt="" loading="lazy"></figure>
     </div>
   </section>
 
   <!-- VIDEO / PODCASTURI -->
   <section id="video">
-    <h2>Ascultă-l pe Mihai</h2>
-    <p class="lead">Interviuri în care a vorbit deschis despre boală și despre meserie.</p>
+    <h2 data-i18n="videos_h2">Ascultă-l pe Mihai</h2>
+    <p class="lead" data-i18n="videos_lead">Interviuri în care a vorbit deschis despre boală și despre meserie.</p>
     <div class="videos">
       <div>
-        <div class="yt" data-id="NirfCTPqdr8" role="button" tabindex="0" aria-label="Redă: Deschis la Minte cu Cornelia Crevean">
+        <div class="yt" data-id="NirfCTPqdr8" role="button" tabindex="0" aria-label="Video">
           <img src="https://i.ytimg.com/vi/NirfCTPqdr8/hqdefault.jpg" alt="" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
-        <p class="vtitle">Despre viața cu Parkinson</p>
+        <p class="vtitle" data-i18n="v1_t">Despre viața cu Parkinson</p>
         <p class="vsub">Podcast „Deschis la Minte" · Cornelia Crevean</p>
       </div>
       <div>
-        <div class="yt" data-id="SkMrfEyaWt4" role="button" tabindex="0" aria-label="Redă: Juridic Cafe — contractele de credit">
+        <div class="yt" data-id="SkMrfEyaWt4" role="button" tabindex="0" aria-label="Video">
           <img src="https://i.ytimg.com/vi/SkMrfEyaWt4/hqdefault.jpg" alt="" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
-        <p class="vtitle">Contractele de credit bancare</p>
+        <p class="vtitle" data-i18n="v2_t">Contractele de credit bancare</p>
         <p class="vsub">Juridic Cafe · Adriana Miron</p>
       </div>
       <div>
-        <div class="yt" data-id="GXeadDetPpU" role="button" tabindex="0" aria-label="Redă: Campus Juridic — inteligența artificială">
+        <div class="yt" data-id="GXeadDetPpU" role="button" tabindex="0" aria-label="Video">
           <img src="https://i.ytimg.com/vi/GXeadDetPpU/hqdefault.jpg" alt="" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
-        <p class="vtitle">Inteligența artificială în drept</p>
+        <p class="vtitle" data-i18n="v3_t">Inteligența artificială în drept</p>
         <p class="vsub">Campus Juridic · Adriana Miron</p>
       </div>
       <div>
-        <div class="yt" data-id="S9BcC_G1pc4" role="button" tabindex="0" aria-label="Redă: Juridic Cafe — drepturile cetățenilor">
+        <div class="yt" data-id="S9BcC_G1pc4" role="button" tabindex="0" aria-label="Video">
           <img src="https://i.ytimg.com/vi/S9BcC_G1pc4/hqdefault.jpg" alt="" loading="lazy">
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
-        <p class="vtitle">Drepturile cetățenilor</p>
+        <p class="vtitle" data-i18n="v4_t">Drepturile cetățenilor</p>
         <p class="vsub">Juridic Cafe · Adriana Miron</p>
       </div>
     </div>
@@ -351,106 +370,106 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
 
   <!-- DBS -->
   <section id="dbs">
-    <h2>Ce este operația și de ce acum</h2>
-    <p class="lead">Stimularea cerebrală profundă (DBS) — tratamentul recomandat de specialiști.</p>
+    <h2 data-i18n="dbs_h2">Ce este operația și de ce acum</h2>
+    <p class="lead" data-i18n="dbs_lead">Stimularea cerebrală profundă (DBS) — tratamentul recomandat de specialiști.</p>
     <div class="grid two">
       <div>
-        <p>La DBS se implantează un neurostimulator care trimite impulsuri către zonele creierului ce controlează mișcarea. Reduce tremorul, rigiditatea și blocajele. Nu e o procedură experimentală — e ce se recomandă când medicamentele nu mai ajung.</p>
-        <p>La Mihai, boala a avansat: fluctuații motorii, blocaje. Neurologii — între care <strong>Prof. Dr. Dr. Christian Franke (München, iunie 2026)</strong> — spun că fereastra bună pentru operație este acum. Amânarea costă exact ce e mai greu de recuperat: calitatea vieții.</p>
+        <p data-i18n="dbs_p1">La DBS se implantează un neurostimulator care trimite impulsuri către zonele creierului ce controlează mișcarea. Reduce tremorul, rigiditatea și blocajele. Nu e o procedură experimentală — e ce se recomandă când medicamentele nu mai ajung.</p>
+        <p data-i18n="dbs_p2">La Mihai, boala a avansat: fluctuații motorii, blocaje. Neurologii — între care <strong>Prof. Dr. Dr. Christian Franke (München, iunie 2026)</strong> — spun că fereastra bună pentru operație este acum. Amânarea costă exact ce e mai greu de recuperat: calitatea vieții.</p>
       </div>
       <div class="card center">
-        <img src="assets/dbs.jpg" alt="Ilustrație" style="border-radius:6px;margin-bottom:10px" loading="lazy">
-        <p class="note" style="margin:0">Ilustrație. Mihai e tânăr, răspunde la levodopa și e cognitiv intact — profilul cu cel mai bun raport beneficiu/risc pentru DBS.</p>
+        <img src="assets/dbs.jpg" alt="" style="border-radius:6px;margin-bottom:10px" loading="lazy">
+        <p class="note" style="margin:0" data-i18n="dbs_note">Ilustrație. Mihai e tânăr, răspunde la levodopa și e cognitiv intact — profilul cu cel mai bun raport beneficiu/risc pentru DBS.</p>
       </div>
     </div>
   </section>
 
   <!-- BUGET -->
   <section id="buget">
-    <h2>Pe ce se duc banii</h2>
-    <p class="lead">Cifrele sunt estimative; le actualizăm după devizul final al clinicii.</p>
+    <h2 data-i18n="budget_h2">Pe ce se duc banii</h2>
+    <p class="lead" data-i18n="budget_lead">Cifrele sunt estimative; le actualizăm după devizul final al clinicii.</p>
     <div class="card">
       <table>
-        <thead><tr><th>Categorie</th><th class="n">Estimare</th></tr></thead>
+        <thead><tr><th data-i18n="b_cat">Categorie</th><th class="n" data-i18n="b_est">Estimare</th></tr></thead>
         <tbody>
-          <tr><td>Intervenția DBS + implant (act medical)</td><td class="n">65.000 €</td></tr>
-          <tr><td>Neurostimulator / dispozitiv</td><td class="n">inclus</td></tr>
-          <tr><td>Evaluări pre-operatorii + imagistică</td><td class="n">3.000 €</td></tr>
-          <tr><td>Transport + cazare (pacient + însoțitor)</td><td class="n">8.500 €</td></tr>
-          <tr><td>Deplasări pentru reglaj (primul an)</td><td class="n">5.000 €</td></tr>
-          <tr><td>Recuperare / kinetoterapie</td><td class="n">4.000 €</td></tr>
-          <tr><td>Rezervă (baterie viitoare, complicații)</td><td class="n">8.000 €</td></tr>
-          <tr class="tot"><td>Total estimat</td><td class="n">≈ 100.000 €</td></tr>
+          <tr><td data-i18n="b_r1">Intervenția DBS + implant (act medical)</td><td class="n">65.000 €</td></tr>
+          <tr><td data-i18n="b_r2">Neurostimulator / dispozitiv</td><td class="n" data-i18n="b_r2v">inclus</td></tr>
+          <tr><td data-i18n="b_r3">Evaluări pre-operatorii + imagistică</td><td class="n">3.000 €</td></tr>
+          <tr><td data-i18n="b_r4">Transport + cazare (pacient + însoțitor)</td><td class="n">8.500 €</td></tr>
+          <tr><td data-i18n="b_r5">Deplasări pentru reglaj (primul an)</td><td class="n">5.000 €</td></tr>
+          <tr><td data-i18n="b_r6">Recuperare / kinetoterapie</td><td class="n">4.000 €</td></tr>
+          <tr><td data-i18n="b_r7">Rezervă (baterie viitoare, complicații)</td><td class="n">8.000 €</td></tr>
+          <tr class="tot"><td data-i18n="b_tot">Total estimat</td><td class="n">≈ 100.000 €</td></tr>
         </tbody>
       </table>
-      <div class="warn" style="margin-top:16px"><strong>Ținta netă</strong> = costul total minus partea decontabilă de CNAS / formular S2. Publicăm aici devizul clinicii și răspunsul CNAS imediat ce le avem.</div>
+      <div class="warn" style="margin-top:16px" data-i18n="b_warn"><strong>Ținta netă</strong> = costul total minus partea decontabilă de CNAS / formular S2. Publicăm aici devizul clinicii și răspunsul CNAS imediat ce le avem.</div>
     </div>
   </section>
 
   <!-- DOCUMENTE -->
   <section id="documente">
-    <h2>Documente medicale</h2>
-    <p class="lead">Diagnostic și recomandări — documente reale, cu datele personale acoperite.</p>
+    <h2 data-i18n="docs_h2">Documente medicale</h2>
+    <p class="lead" data-i18n="docs_lead">Diagnostic și recomandări — documente reale, cu datele personale acoperite.</p>
     <div class="docwrap">
-      <div class="doc">Scrisoare medicală<br>Prof. Dr. Dr. Christian Franke</div>
-      <div class="doc">Recomandare DBS</div>
-      <div class="doc">Confirmare DAT-scan</div>
-      <div class="doc">Deviz clinică <span class="ph">(urmează)</span></div>
+      <div class="doc" data-i18n="doc1">Scrisoare medicală<br>Prof. Dr. Dr. Christian Franke</div>
+      <div class="doc" data-i18n="doc2">Recomandare DBS</div>
+      <div class="doc" data-i18n="doc3">Confirmare DAT-scan</div>
+      <div class="doc" data-i18n="doc4">Deviz clinică <span class="ph">(urmează)</span></div>
     </div>
-    <p class="note" style="margin-top:12px">Documentele se publică doar cu acordul scris al lui Mihai, cu CNP-ul și datele personale acoperite.</p>
+    <p class="note" style="margin-top:12px" data-i18n="docs_note">Documentele se publică doar cu acordul scris al lui Mihai, cu CNP-ul și datele personale acoperite.</p>
   </section>
 
   <!-- CUM AJUNG BANII -->
   <section id="cum">
-    <h2>Cum ajung banii</h2>
+    <h2 data-i18n="how_h2">Cum ajung banii</h2>
     <div class="grid two">
-      <div class="card"><h3 style="margin-top:0">Cont dedicat</h3><p class="muted" style="margin:0">Banii intră într-un cont folosit doar pentru această cauză<span data-cfg-ong>, prin ONG-ul partener <b data-cfg="ong"></b> (CIF <span data-cfg="cifOng"></span>)</span>. Unde se poate, plata merge direct către clinică.</p></div>
-      <div class="card"><h3 style="margin-top:0">Dacă se strânge mai mult</h3><p class="muted" style="margin:0">Surplusul acoperă reglajele și controalele din anii următori. Ce depășește nevoia va merge, transparent, către un alt pacient cu Parkinson.</p></div>
+      <div class="card"><h3 style="margin-top:0" data-i18n="how_c1_h3">Cont dedicat</h3><p class="muted" style="margin:0"><span data-i18n="how_c1_a">Banii intră într-un cont folosit doar pentru această cauză</span><span data-cfg-ong><span data-i18n="how_ong_pre">, prin ONG-ul partener </span><b data-cfg="ong"></b> (CIF <span data-cfg="cifOng"></span>)</span><span data-i18n="how_c1_b">. Unde se poate, plata merge direct către clinică.</span></p></div>
+      <div class="card"><h3 style="margin-top:0" data-i18n="how_c2_h3">Dacă se strânge mai mult</h3><p class="muted" style="margin:0" data-i18n="how_c2_p">Surplusul acoperă reglajele și controalele din anii următori. Ce depășește nevoia va merge, transparent, către un alt pacient cu Parkinson.</p></div>
     </div>
-    <p class="note" style="margin-top:12px">Publicăm periodic sumele strânse și cheltuite.</p>
+    <p class="note" style="margin-top:12px" data-i18n="how_note">Publicăm periodic sumele strânse și cheltuite.</p>
   </section>
 
   <!-- FAQ -->
   <section id="faq">
-    <h2>Întrebări frecvente</h2>
-    <details><summary>De ce nu plătește statul operația?</summary>
-      <p class="muted">DBS se face rar în România, în puține centre, cu liste lungi de așteptare. Decontarea în străinătate prin CNAS (formular S2/E112) e o procedură lentă, cu aprobare incertă. Depunem în paralel cererea la CNAS și publicăm aici răspunsul; suma cerută public e partea rămasă neacoperită.</p></details>
-    <details><summary>Unde ajung banii mei?</summary>
-      <p class="muted">Doar către operația lui Mihai și costurile direct legate de ea. Contul e dedicat campaniei, iar sumele se raportează public.</p></details>
-    <details><summary>De unde știu că e o cauză reală?</summary>
-      <p class="muted">Mihai Carapcea e avocat în Brașov, cu practică publică și apariții în presă — le găsești mai sus. Poți suna sau scrie înainte să donezi.</p></details>
-    <details><summary>Pot dona ca firmă? E deductibil?</summary>
-      <p class="muted">Da. Prin sponsorizare către ONG-ul partener, suma e deductibilă din impozitul pe profit în limita legală (20% din impozit / 0,75% din cifra de afaceri). Scrie-ne la <span class="ph" data-cfg="email">adresa de contact (o publicăm în curând)</span> și pregătim contractul.</p></details>
-    <details><summary>Pot redirecționa 3,5% din impozit?</summary>
-      <p class="muted">Da, prin Formularul 230 — nu te costă nimic. Detalii la <span class="ph" data-cfg="email">adresa de contact (o publicăm în curând)</span>.</p></details>
+    <h2 data-i18n="faq_h2">Întrebări frecvente</h2>
+    <details><summary data-i18n="faq1_q">De ce nu plătește statul operația?</summary>
+      <p class="muted" data-i18n="faq1_a">DBS se face rar în România, în puține centre, cu liste lungi de așteptare. Decontarea în străinătate prin CNAS (formular S2/E112) e o procedură lentă, cu aprobare incertă. Depunem în paralel cererea la CNAS și publicăm aici răspunsul; suma cerută public e partea rămasă neacoperită.</p></details>
+    <details><summary data-i18n="faq2_q">Unde ajung banii mei?</summary>
+      <p class="muted" data-i18n="faq2_a">Doar către operația lui Mihai și costurile direct legate de ea. Contul e dedicat campaniei, iar sumele se raportează public.</p></details>
+    <details><summary data-i18n="faq3_q">De unde știu că e o cauză reală?</summary>
+      <p class="muted" data-i18n="faq3_a">Mihai Carapcea e avocat în Brașov, cu practică publică și apariții în presă — le găsești mai sus. Poți suna sau scrie înainte să donezi.</p></details>
+    <details><summary data-i18n="faq4_q">Pot dona ca firmă? E deductibil?</summary>
+      <p class="muted"><span data-i18n="faq4_a">Da. Prin sponsorizare către ONG-ul partener, suma e deductibilă din impozitul pe profit în limita legală (20% din impozit / 0,75% din cifra de afaceri). Scrie-ne la </span><span class="ph" data-cfg="email" data-i18n="email_soon_long">adresa de contact (o publicăm în curând)</span><span data-i18n="faq4_b"> și pregătim contractul.</span></p></details>
+    <details><summary data-i18n="faq5_q">Pot redirecționa 3,5% din impozit?</summary>
+      <p class="muted"><span data-i18n="faq5_a">Da, prin Formularul 230 — nu te costă nimic. Detalii la </span><span class="ph" data-cfg="email" data-i18n="email_soon_long">adresa de contact (o publicăm în curând)</span><span data-i18n="faq5_b">.</span></p></details>
   </section>
 
   <!-- DONEAZA -->
   <section id="doneaza">
-    <h2>Cum poți ajuta</h2>
-    <p class="lead">Orice sumă ajută. Dacă nu poți dona, trimite pagina mai departe.</p>
+    <h2 data-i18n="donate_h2">Cum poți ajuta</h2>
+    <p class="lead" data-i18n="donate_lead">Orice sumă ajută. Dacă nu poți dona, trimite pagina mai departe.</p>
     <div class="grid two">
       <div class="card" data-cfg-req="revolut">
-        <h3 style="margin-top:0">Donează cu Revolut</h3>
-        <p class="muted">Direct din aplicație, fără comision.</p>
+        <h3 style="margin-top:0" data-i18n="cta_revolut">Donează cu Revolut</h3>
+        <p class="muted" data-i18n="rev_p">Direct din aplicație, fără comision.</p>
         <a class="btn rev big" data-cfg-link="revolut" href="#">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h7.2c3.2 0 5.6 2.1 5.6 5.1 0 2.4-1.5 4.2-3.8 4.9L19.6 21h-4.1l-4.2-7.2H9.7V21H6V3zm3.7 3v4.9h3.3c1.6 0 2.6-1 2.6-2.5S14.6 6 13 6H9.7z"/></svg>
           revolut.me
         </a>
       </div>
       <div class="card">
-        <h3 style="margin-top:0">Transfer bancar</h3>
-        <p class="muted" style="margin-bottom:6px">Titular: <b data-cfg="titular">îl anunțăm în curând</b></p>
-        <div data-cfg-req="ibanRON"><div class="iban">RON: <span data-cfg="ibanRON"></span> <button class="copybtn" data-copy="ibanRON" type="button">Copiază</button></div></div>
-        <div data-cfg-req="ibanEUR"><div class="iban">EUR: <span data-cfg="ibanEUR"></span> <button class="copybtn" data-copy="ibanEUR" type="button">Copiază</button></div></div>
-        <p class="note" data-cfg-req-hidden="ibanRON" style="margin-top:8px">Publicăm aici conturile dedicate campaniei în cel mai scurt timp.</p>
-        <p class="note" style="margin-top:8px">Pentru firme (sponsorizare deductibilă) și Formular 230: <span class="ph" data-cfg="email">contact în curând</span></p>
+        <h3 style="margin-top:0" data-i18n="bank_h3">Transfer bancar</h3>
+        <p class="muted" style="margin-bottom:6px"><span data-i18n="titular_label">Titular:</span> <b data-cfg="titular" data-i18n="titular_soon">îl anunțăm în curând</b></p>
+        <div data-cfg-req="ibanRON"><div class="iban">RON: <span data-cfg="ibanRON"></span> <button class="copybtn" data-copy="ibanRON" type="button" data-i18n="copy_btn">Copiază</button></div></div>
+        <div data-cfg-req="ibanEUR"><div class="iban">EUR: <span data-cfg="ibanEUR"></span> <button class="copybtn" data-copy="ibanEUR" type="button" data-i18n="copy_btn">Copiază</button></div></div>
+        <p class="note" data-cfg-req-hidden="ibanRON" style="margin-top:8px" data-i18n="iban_soon">Publicăm aici conturile dedicate campaniei în cel mai scurt timp.</p>
+        <p class="note" style="margin-top:8px"><span data-i18n="firms_note">Pentru firme (sponsorizare deductibilă) și Formular 230: </span><span class="ph" data-cfg="email" data-i18n="email_soon_short">contact în curând</span></p>
       </div>
     </div>
 
     <div class="card center" style="margin-top:20px">
-      <h3 style="margin-top:0">Nu poți dona? Trimite mai departe.</h3>
-      <p class="muted" style="max-width:520px;margin:0 auto 16px">Trimite pagina unui prieten sau într-un grup. Contează mai mult decât crezi.</p>
+      <h3 style="margin-top:0" data-i18n="share_h3">Nu poți dona? Trimite mai departe.</h3>
+      <p class="muted" style="max-width:520px;margin:0 auto 16px" data-i18n="share_p">Trimite pagina unui prieten sau într-un grup. Contează mai mult decât crezi.</p>
       <div class="sharegrid">
         <a class="share wa" id="shareWa" href="#" target="_blank" rel="noopener">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.3.1 1.6.8 1.9.9.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
@@ -462,7 +481,7 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
         </a>
         <button class="share cp" id="shareCopy" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          <span>Copiază linkul</span>
+          <span data-i18n="copy_link">Copiază linkul</span>
         </button>
       </div>
     </div>
@@ -470,11 +489,11 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
 
   <!-- CONTACT -->
   <section id="contact" style="border-bottom:0">
-    <h2>Contact și transparență</h2>
+    <h2 data-i18n="contact_h2">Contact și transparență</h2>
     <div class="grid three">
-      <div class="card"><h3 style="margin-top:0">Contact</h3><p class="muted" style="margin:0">Email: <span data-cfg="email">în curând</span><br><span data-cfg-req="telefon">Telefon: <span data-cfg="telefon"></span></span></p></div>
-      <div class="card"><h3 style="margin-top:0">Administrare</h3><p class="muted" style="margin:0"><span data-cfg="ong">Cont dedicat campaniei</span><br><span data-cfg-req="cifOng">CIF: <span data-cfg="cifOng"></span></span></p></div>
-      <div class="card"><h3 style="margin-top:0">Raportare</h3><p class="muted" style="margin:0">Publicăm periodic sumele strânse și cheltuite, plus dovada operației.</p></div>
+      <div class="card"><h3 style="margin-top:0" data-i18n="c1_h3">Contact</h3><p class="muted" style="margin:0">Email: <span data-cfg="email" data-i18n="soon">în curând</span><br><span data-cfg-req="telefon"><span data-i18n="phone_label">Telefon:</span> <span data-cfg="telefon"></span></span></p></div>
+      <div class="card"><h3 style="margin-top:0" data-i18n="c2_h3">Administrare</h3><p class="muted" style="margin:0"><span data-cfg="ong" data-i18n="dedicated_acc">Cont dedicat campaniei</span><br><span data-cfg-req="cifOng">CIF: <span data-cfg="cifOng"></span></span></p></div>
+      <div class="card"><h3 style="margin-top:0" data-i18n="c3_h3">Raportare</h3><p class="muted" style="margin:0" data-i18n="c3_p">Publicăm periodic sumele strânse și cheltuite, plus dovada operației.</p></div>
     </div>
   </section>
 
@@ -483,7 +502,7 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
 <footer>
   <div class="wrap center">
     <p><strong>Mihai Carapcea — Avocatul vs Parkinson</strong></p>
-    <div class="social" aria-label="Rețele sociale">
+    <div class="social" aria-label="Social">
       <a data-cfg-link="instagram" hidden href="#" aria-label="Instagram" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
       </a>
@@ -494,78 +513,484 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.5a6 6 0 1 0 5 5.9V8.7a7.6 7.6 0 0 0 4.4 1.4v-3a4.5 4.5 0 0 1-4.4-5.1z"/></svg>
       </a>
     </div>
-    <p class="note">Povestea și diagnosticul sunt reale. Ilustrațiile generate pe calculator sunt marcate ca atare. Datele personale și medicale sunt folosite cu acordul lui Mihai, conform GDPR. © 2026 · pentru-mihai.ro</p>
+    <p class="note" data-i18n="footer_note">Povestea și diagnosticul sunt reale. Ilustrațiile generate pe calculator sunt marcate ca atare. Datele personale și medicale sunt folosite cu acordul lui Mihai, conform GDPR. © 2026 · pentru-mihai.ro</p>
   </div>
 </footer>
 
 <!-- bara fixă de CTA pe mobil -->
 <div class="mobilecta" id="mobileCta">
-  <a class="btn" href="#doneaza">Donează</a>
-  <button class="btn ghost" id="shareMobile" type="button">Distribuie</button>
+  <a class="btn" href="#doneaza" data-i18n="donate">Donează</a>
+  <button class="btn ghost" id="shareMobile" type="button" data-i18n="share_btn">Distribuie</button>
 </div>
 
-<button id="themeBtn" title="Schimbă tema" aria-label="Schimbă tema">◐</button>
+<button id="themeBtn" title="Temă" aria-label="Temă">◐</button>
 
 <script>
+/* ============================================================
+   TRADUCERI — ro / en / de / ru
+   ============================================================ */
+const I18N = {
+ro: {
+  title: `Ajută-l pe Mihai să câștige și acest proces — Avocatul vs Parkinson`,
+  nav_story: `Povestea`, nav_video: `Video`, nav_budget: `Buget`, nav_faq: `Întrebări`,
+  donate: `Donează`,
+  hero_tag: `Avocatul vs Parkinson`,
+  hero_h1: `20 de ani a apărat oameni în instanță. Acum are nevoie ca noi să-l apărăm pe el.`,
+  hero_sub: `Mihai Carapcea, avocat din Brașov și tată a doi copii, are Parkinson cu debut precoce. Medicii îi recomandă <strong>urgent</strong> o operație de stimulare cerebrală profundă (DBS). Costă aproximativ <strong>100.000 €</strong>. Singur nu îi poate strânge.`,
+  campaign_start: `Campania abia începe`,
+  goal_label: `țintă`,
+  first_donors: `Fii printre primii care donează.`,
+  donors_line: `{n} donatori · {pct}%`,
+  updated_label: `actualizat`,
+  cta_donate_op: `Donează pentru operație`,
+  cta_revolut: `Donează cu Revolut`,
+  share_btn: `Distribuie`,
+  trustrow: `Buget public · documente medicale · apariții în presă — totul pe această pagină.`,
+  portrait_cap: `Mihai Carapcea · avocat · Brașov`,
+  vc_h2: `Povestea lui, în două minute`,
+  vc_placeholder: `Videoclipul e în filmare și va apărea aici. Până atunci, interviurile de mai jos spun povestea.`,
+  story_h2: `Povestea mea`,
+  story_lead: `În cuvintele lui Mihai.`,
+  story_p1: `Timp de 20 de ani am alergat de la o sală de judecată la alta, crezând că nimic nu mă poate opri. Apoi, la 36 de ani, viața m-a oprit cu forța. Diagnosticul: <strong>Parkinson</strong>.`,
+  story_p2: `Trăiesc între doze de medicamente — de 4–5 ori pe zi. Nu vindecă, doar țin simptomele în frâu câteva ore. Fiecare zi e o luptă: cu mine, cu boala, cu privirile celor din jur.`,
+  story_p3: `Ce nu mi-a luat boala: <strong>mintea</strong>. Iar în avocatură, mintea cântărește totul. Profesia mă ține viu, treaz, util.`,
+  story_quote: `„Eu am Parkinson. Dar Parkinson nu mă are pe mine."`,
+  who_h2: `Cine este Mihai`,
+  who_lead: `Avocat în Brașov, cu aproape 20 de ani de practică în drept bancar și protecția consumatorului.`,
+  who_c1_h3: `Practica lui`,
+  who_c1_p: `A câștigat procese împotriva băncilor pentru oameni prinși în contracte abuzive — inclusiv la Înalta Curte de Casație și Justiție.`,
+  who_c2_h3: `În presă`,
+  videos_h2: `Ascultă-l pe Mihai`,
+  videos_lead: `Interviuri în care a vorbit deschis despre boală și despre meserie.`,
+  v1_t: `Despre viața cu Parkinson`, v2_t: `Contractele de credit bancare`, v3_t: `Inteligența artificială în drept`, v4_t: `Drepturile cetățenilor`,
+  dbs_h2: `Ce este operația și de ce acum`,
+  dbs_lead: `Stimularea cerebrală profundă (DBS) — tratamentul recomandat de specialiști.`,
+  dbs_p1: `La DBS se implantează un neurostimulator care trimite impulsuri către zonele creierului ce controlează mișcarea. Reduce tremorul, rigiditatea și blocajele. Nu e o procedură experimentală — e ce se recomandă când medicamentele nu mai ajung.`,
+  dbs_p2: `La Mihai, boala a avansat: fluctuații motorii, blocaje. Neurologii — între care <strong>Prof. Dr. Dr. Christian Franke (München, iunie 2026)</strong> — spun că fereastra bună pentru operație este acum. Amânarea costă exact ce e mai greu de recuperat: calitatea vieții.`,
+  dbs_note: `Ilustrație. Mihai e tânăr, răspunde la levodopa și e cognitiv intact — profilul cu cel mai bun raport beneficiu/risc pentru DBS.`,
+  budget_h2: `Pe ce se duc banii`,
+  budget_lead: `Cifrele sunt estimative; le actualizăm după devizul final al clinicii.`,
+  b_cat: `Categorie`, b_est: `Estimare`,
+  b_r1: `Intervenția DBS + implant (act medical)`, b_r2: `Neurostimulator / dispozitiv`, b_r2v: `inclus`,
+  b_r3: `Evaluări pre-operatorii + imagistică`, b_r4: `Transport + cazare (pacient + însoțitor)`,
+  b_r5: `Deplasări pentru reglaj (primul an)`, b_r6: `Recuperare / kinetoterapie`, b_r7: `Rezervă (baterie viitoare, complicații)`,
+  b_tot: `Total estimat`,
+  b_warn: `<strong>Ținta netă</strong> = costul total minus partea decontabilă de CNAS / formular S2. Publicăm aici devizul clinicii și răspunsul CNAS imediat ce le avem.`,
+  docs_h2: `Documente medicale`,
+  docs_lead: `Diagnostic și recomandări — documente reale, cu datele personale acoperite.`,
+  doc1: `Scrisoare medicală<br>Prof. Dr. Dr. Christian Franke`, doc2: `Recomandare DBS`, doc3: `Confirmare DAT-scan`,
+  doc4: `Deviz clinică <span class="ph">(urmează)</span>`,
+  docs_note: `Documentele se publică doar cu acordul scris al lui Mihai, cu CNP-ul și datele personale acoperite.`,
+  how_h2: `Cum ajung banii`,
+  how_c1_h3: `Cont dedicat`,
+  how_c1_a: `Banii intră într-un cont folosit doar pentru această cauză`,
+  how_ong_pre: `, prin ONG-ul partener `,
+  how_c1_b: `. Unde se poate, plata merge direct către clinică.`,
+  how_c2_h3: `Dacă se strânge mai mult`,
+  how_c2_p: `Surplusul acoperă reglajele și controalele din anii următori. Ce depășește nevoia va merge, transparent, către un alt pacient cu Parkinson.`,
+  how_note: `Publicăm periodic sumele strânse și cheltuite.`,
+  faq_h2: `Întrebări frecvente`,
+  faq1_q: `De ce nu plătește statul operația?`,
+  faq1_a: `DBS se face rar în România, în puține centre, cu liste lungi de așteptare. Decontarea în străinătate prin CNAS (formular S2/E112) e o procedură lentă, cu aprobare incertă. Depunem în paralel cererea la CNAS și publicăm aici răspunsul; suma cerută public e partea rămasă neacoperită.`,
+  faq2_q: `Unde ajung banii mei?`,
+  faq2_a: `Doar către operația lui Mihai și costurile direct legate de ea. Contul e dedicat campaniei, iar sumele se raportează public.`,
+  faq3_q: `De unde știu că e o cauză reală?`,
+  faq3_a: `Mihai Carapcea e avocat în Brașov, cu practică publică și apariții în presă — le găsești mai sus. Poți suna sau scrie înainte să donezi.`,
+  faq4_q: `Pot dona ca firmă? E deductibil?`,
+  faq4_a: `Da. Prin sponsorizare către ONG-ul partener, suma e deductibilă din impozitul pe profit în limita legală (20% din impozit / 0,75% din cifra de afaceri). Scrie-ne la `,
+  faq4_b: ` și pregătim contractul.`,
+  faq5_q: `Pot redirecționa 3,5% din impozit?`,
+  faq5_a: `Da, prin Formularul 230 — nu te costă nimic. Detalii la `,
+  faq5_b: `.`,
+  donate_h2: `Cum poți ajuta`,
+  donate_lead: `Orice sumă ajută. Dacă nu poți dona, trimite pagina mai departe.`,
+  rev_p: `Direct din aplicație, fără comision.`,
+  bank_h3: `Transfer bancar`,
+  titular_label: `Titular:`,
+  titular_soon: `îl anunțăm în curând`,
+  iban_soon: `Publicăm aici conturile dedicate campaniei în cel mai scurt timp.`,
+  firms_note: `Pentru firme (sponsorizare deductibilă) și Formular 230: `,
+  email_soon_long: `adresa de contact (o publicăm în curând)`,
+  email_soon_short: `contact în curând`,
+  soon: `în curând`,
+  copy_btn: `Copiază`, copied: `Copiat`, copy_link: `Copiază linkul`,
+  share_h3: `Nu poți dona? Trimite mai departe.`,
+  share_p: `Trimite pagina unui prieten sau într-un grup. Contează mai mult decât crezi.`,
+  contact_h2: `Contact și transparență`,
+  c1_h3: `Contact`, phone_label: `Telefon:`,
+  c2_h3: `Administrare`, dedicated_acc: `Cont dedicat campaniei`,
+  c3_h3: `Raportare`,
+  c3_p: `Publicăm periodic sumele strânse și cheltuite, plus dovada operației.`,
+  footer_note: `Povestea și diagnosticul sunt reale. Ilustrațiile generate pe calculator sunt marcate ca atare. Datele personale și medicale sunt folosite cu acordul lui Mihai, conform GDPR. © 2026 · pentru-mihai.ro`,
+  share_text: `Mihai Carapcea, avocat din Brașov, luptă cu Parkinson și are nevoie de operația DBS. Ajută-l să câștige și acest proces: `
+},
+en: {
+  title: `Help Mihai win this case too — The Lawyer vs Parkinson`,
+  nav_story: `Story`, nav_video: `Video`, nav_budget: `Budget`, nav_faq: `FAQ`,
+  donate: `Donate`,
+  hero_tag: `The Lawyer vs Parkinson`,
+  hero_h1: `For 20 years he defended people in court. Now he needs us to defend him.`,
+  hero_sub: `Mihai Carapcea, a lawyer from Brașov and father of two, has early-onset Parkinson's. His doctors <strong>urgently</strong> recommend deep brain stimulation (DBS) surgery. It costs about <strong>€100,000</strong> — more than he can raise alone.`,
+  campaign_start: `The campaign is just starting`,
+  goal_label: `goal`,
+  first_donors: `Be among the first to give.`,
+  donors_line: `{n} donors · {pct}%`,
+  updated_label: `updated`,
+  cta_donate_op: `Donate for the surgery`,
+  cta_revolut: `Donate with Revolut`,
+  share_btn: `Share`,
+  trustrow: `Public budget · medical records · press coverage — all on this page.`,
+  portrait_cap: `Mihai Carapcea · lawyer · Brașov`,
+  vc_h2: `His story, in two minutes`,
+  vc_placeholder: `The campaign video is being filmed and will appear here. Until then, the interviews below tell the story.`,
+  story_h2: `My story`,
+  story_lead: `In Mihai's own words.`,
+  story_p1: `For 20 years I ran from one courtroom to another, believing nothing could stop me. Then, at 36, life stopped me by force. The diagnosis: <strong>Parkinson's</strong>.`,
+  story_p2: `I live between doses of medication — four or five times a day. They don't cure anything; they just hold the symptoms back for a few hours. Every day is a fight: with myself, with the disease, with the way people look at me.`,
+  story_p3: `What the disease hasn't taken: <strong>my mind</strong>. And in law, the mind is everything. My work keeps me alive, awake, useful.`,
+  story_quote: `"I have Parkinson's. But Parkinson's doesn't have me."`,
+  who_h2: `Who Mihai is`,
+  who_lead: `A lawyer in Brașov with nearly 20 years of practice in banking law and consumer protection.`,
+  who_c1_h3: `His work`,
+  who_c1_p: `He has won cases against banks for people trapped in abusive contracts — including before Romania's High Court of Cassation and Justice.`,
+  who_c2_h3: `In the press`,
+  videos_h2: `Listen to Mihai`,
+  videos_lead: `Interviews — in Romanian — where he speaks openly about the disease and his work.`,
+  v1_t: `Living with Parkinson's`, v2_t: `Bank loan contracts`, v3_t: `AI and the law`, v4_t: `Citizens' rights`,
+  dbs_h2: `What the surgery is and why now`,
+  dbs_lead: `Deep brain stimulation (DBS) — the treatment his specialists recommend.`,
+  dbs_p1: `In DBS surgery, a neurostimulator is implanted to send impulses to the brain areas that control movement. It reduces tremor, rigidity and freezing episodes. It is not experimental — it's the standard recommendation when medication is no longer enough.`,
+  dbs_p2: `Mihai's disease has progressed: motor fluctuations, freezing. His neurologists — including <strong>Prof. Dr. Dr. Christian Franke (Munich, June 2026)</strong> — say the right window for surgery is now. Waiting costs the one thing hardest to get back: quality of life.`,
+  dbs_note: `Illustration. Mihai is young, responds to levodopa and is cognitively intact — the profile with the best benefit-to-risk ratio for DBS.`,
+  budget_h2: `Where the money goes`,
+  budget_lead: `The figures are estimates; we'll update them once the clinic issues its final quote.`,
+  b_cat: `Item`, b_est: `Estimate`,
+  b_r1: `DBS surgery + implant (medical procedure)`, b_r2: `Neurostimulator / device`, b_r2v: `included`,
+  b_r3: `Pre-surgery assessments + imaging`, b_r4: `Travel + accommodation (patient + companion)`,
+  b_r5: `Adjustment visits (first year)`, b_r6: `Rehabilitation / physiotherapy`, b_r7: `Reserve (future battery, complications)`,
+  b_tot: `Estimated total`,
+  b_warn: `<strong>Net target</strong> = total cost minus whatever Romania's public health fund (CNAS / S2 form) covers. We'll publish the clinic's quote and the CNAS answer here as soon as we have them.`,
+  docs_h2: `Medical records`,
+  docs_lead: `Diagnosis and recommendations — real documents, with personal data redacted.`,
+  doc1: `Medical letter<br>Prof. Dr. Dr. Christian Franke`, doc2: `DBS recommendation`, doc3: `DAT scan confirmation`,
+  doc4: `Clinic quote <span class="ph">(coming)</span>`,
+  docs_note: `Documents are published only with Mihai's written consent, with ID numbers and personal data redacted.`,
+  how_h2: `How the money gets there`,
+  how_c1_h3: `A dedicated account`,
+  how_c1_a: `The money goes into an account used only for this cause`,
+  how_ong_pre: `, via the partner NGO `,
+  how_c1_b: `. Where possible, payment goes directly to the clinic.`,
+  how_c2_h3: `If more is raised`,
+  how_c2_p: `Any surplus covers adjustments and check-ups in the years ahead. Whatever exceeds the need will go, transparently, to another Parkinson's patient.`,
+  how_note: `We regularly publish what has been raised and spent.`,
+  faq_h2: `Frequently asked questions`,
+  faq1_q: `Why doesn't the state pay for the surgery?`,
+  faq1_a: `DBS is rarely performed in Romania, in few centres, with long waiting lists. Reimbursement abroad through CNAS (S2/E112 form) is a slow procedure with an uncertain outcome. We are filing the CNAS request in parallel and will publish the answer here; the amount we ask for publicly is the part left uncovered.`,
+  faq2_q: `Where does my money go?`,
+  faq2_a: `Only to Mihai's surgery and the costs directly tied to it. The account is dedicated to the campaign and the amounts are reported publicly.`,
+  faq3_q: `How do I know this is real?`,
+  faq3_a: `Mihai Carapcea is a practising lawyer in Brașov, with press coverage and public appearances — you'll find them above. You can call or write before donating.`,
+  faq4_q: `Can my company donate? Is it deductible?`,
+  faq4_a: `Yes. Through sponsorship via the partner NGO, the amount is deductible from profit tax within the legal limit (20% of tax / 0.75% of turnover — Romanian rules). Write to us at `,
+  faq4_b: ` and we'll prepare the contract.`,
+  faq5_q: `Can I redirect 3.5% of my income tax?`,
+  faq5_a: `Yes — through Form 230 (for Romanian taxpayers), at no cost to you. Details at `,
+  faq5_b: `.`,
+  donate_h2: `How you can help`,
+  donate_lead: `Any amount helps. If you can't give, share the page.`,
+  rev_p: `Straight from the app, no fees.`,
+  bank_h3: `Bank transfer`,
+  titular_label: `Account holder:`,
+  titular_soon: `to be announced shortly`,
+  iban_soon: `We'll publish the campaign's dedicated bank accounts here very soon.`,
+  firms_note: `For companies (deductible sponsorship) and Form 230: `,
+  email_soon_long: `contact address (coming soon)`,
+  email_soon_short: `contact coming soon`,
+  soon: `coming soon`,
+  copy_btn: `Copy`, copied: `Copied`, copy_link: `Copy link`,
+  share_h3: `Can't donate? Pass it on.`,
+  share_p: `Send this page to a friend or a group. It matters more than you think.`,
+  contact_h2: `Contact and transparency`,
+  c1_h3: `Contact`, phone_label: `Phone:`,
+  c2_h3: `Administration`, dedicated_acc: `Dedicated campaign account`,
+  c3_h3: `Reporting`,
+  c3_p: `We regularly publish amounts raised and spent, plus proof of the surgery.`,
+  footer_note: `The story and the diagnosis are real. Computer-generated illustrations are labelled as such. Personal and medical data are used with Mihai's consent, in line with GDPR. © 2026 · pentru-mihai.ro`,
+  share_text: `Mihai Carapcea, a lawyer from Brașov, is fighting Parkinson's and needs DBS surgery. Help him win this case too: `
+},
+de: {
+  title: `Helfen Sie Mihai, auch diesen Prozess zu gewinnen — Der Anwalt gegen Parkinson`,
+  nav_story: `Geschichte`, nav_video: `Video`, nav_budget: `Budget`, nav_faq: `Fragen`,
+  donate: `Spenden`,
+  hero_tag: `Der Anwalt gegen Parkinson`,
+  hero_h1: `20 Jahre lang hat er Menschen vor Gericht verteidigt. Jetzt braucht er uns.`,
+  hero_sub: `Mihai Carapcea, Rechtsanwalt aus Brașov und Vater zweier Kinder, hat Parkinson mit frühem Beginn. Seine Ärzte empfehlen <strong>dringend</strong> eine Tiefe Hirnstimulation (DBS). Die Operation kostet rund <strong>100.000 €</strong> — allein kann er das nicht stemmen.`,
+  campaign_start: `Die Kampagne beginnt gerade`,
+  goal_label: `Ziel`,
+  first_donors: `Gehören Sie zu den Ersten, die spenden.`,
+  donors_line: `{n} Spender · {pct}%`,
+  updated_label: `Stand`,
+  cta_donate_op: `Für die Operation spenden`,
+  cta_revolut: `Mit Revolut spenden`,
+  share_btn: `Teilen`,
+  trustrow: `Offenes Budget · medizinische Unterlagen · Presseberichte — alles auf dieser Seite.`,
+  portrait_cap: `Mihai Carapcea · Rechtsanwalt · Brașov`,
+  vc_h2: `Seine Geschichte in zwei Minuten`,
+  vc_placeholder: `Das Video wird gerade gedreht und erscheint hier. Bis dahin erzählen die Interviews unten die Geschichte.`,
+  story_h2: `Meine Geschichte`,
+  story_lead: `In Mihais eigenen Worten.`,
+  story_p1: `Zwanzig Jahre lang bin ich von einem Gerichtssaal zum nächsten geeilt, überzeugt, dass mich nichts aufhalten kann. Dann, mit 36, hat mich das Leben mit Gewalt gestoppt. Die Diagnose: <strong>Parkinson</strong>.`,
+  story_p2: `Ich lebe von Dosis zu Dosis — vier- bis fünfmal am Tag. Die Medikamente heilen nicht, sie halten die Symptome nur für ein paar Stunden in Schach. Jeder Tag ist ein Kampf: mit mir, mit der Krankheit, mit den Blicken der anderen.`,
+  story_p3: `Was mir die Krankheit nicht genommen hat: <strong>meinen Verstand</strong>. Und in der Anwaltschaft zählt der Verstand alles. Mein Beruf hält mich am Leben, wach, nützlich.`,
+  story_quote: `„Ich habe Parkinson. Aber Parkinson hat nicht mich."`,
+  who_h2: `Wer Mihai ist`,
+  who_lead: `Rechtsanwalt in Brașov, seit fast 20 Jahren tätig im Bankrecht und Verbraucherschutz.`,
+  who_c1_h3: `Seine Arbeit`,
+  who_c1_p: `Er hat für Menschen in missbräuchlichen Verträgen Prozesse gegen Banken gewonnen — bis hin zum Obersten Gerichtshof Rumäniens.`,
+  who_c2_h3: `In der Presse`,
+  videos_h2: `Mihai im Gespräch`,
+  videos_lead: `Interviews (auf Rumänisch), in denen er offen über Krankheit und Beruf spricht.`,
+  v1_t: `Leben mit Parkinson`, v2_t: `Bankkreditverträge`, v3_t: `KI im Recht`, v4_t: `Bürgerrechte`,
+  dbs_h2: `Was die Operation ist — und warum jetzt`,
+  dbs_lead: `Tiefe Hirnstimulation (DBS) — die von den Spezialisten empfohlene Behandlung.`,
+  dbs_p1: `Bei der DBS wird ein Neurostimulator implantiert, der Impulse an die Hirnareale sendet, die die Bewegung steuern. Das lindert Zittern, Steifheit und Blockaden. Kein experimenteller Eingriff — sondern das, was empfohlen wird, wenn Medikamente nicht mehr ausreichen.`,
+  dbs_p2: `Bei Mihai ist die Krankheit fortgeschritten: motorische Schwankungen, Blockaden. Die Neurologen — darunter <strong>Prof. Dr. Dr. Christian Franke (München, Juni 2026)</strong> — sagen: Das richtige Zeitfenster für die Operation ist jetzt. Aufschub kostet genau das, was am schwersten zurückzugewinnen ist: Lebensqualität.`,
+  dbs_note: `Illustration. Mihai ist jung, spricht auf Levodopa an und ist kognitiv voll da — das Profil mit dem besten Nutzen-Risiko-Verhältnis für die DBS.`,
+  budget_h2: `Wofür das Geld gebraucht wird`,
+  budget_lead: `Die Zahlen sind Schätzungen; wir aktualisieren sie nach dem endgültigen Kostenvoranschlag der Klinik.`,
+  b_cat: `Posten`, b_est: `Schätzung`,
+  b_r1: `DBS-Operation + Implantat (medizinische Leistung)`, b_r2: `Neurostimulator / Gerät`, b_r2v: `inklusive`,
+  b_r3: `Voruntersuchungen + Bildgebung`, b_r4: `Anreise + Unterkunft (Patient + Begleitung)`,
+  b_r5: `Nachjustierungs-Termine (erstes Jahr)`, b_r6: `Reha / Physiotherapie`, b_r7: `Reserve (künftige Batterie, Komplikationen)`,
+  b_tot: `Geschätzte Summe`,
+  b_warn: `<strong>Netto-Ziel</strong> = Gesamtkosten minus dem Anteil, den die rumänische Krankenkasse (CNAS / S2-Formular) übernimmt. Kostenvoranschlag der Klinik und CNAS-Bescheid veröffentlichen wir hier, sobald sie vorliegen.`,
+  docs_h2: `Medizinische Unterlagen`,
+  docs_lead: `Diagnose und Empfehlungen — echte Dokumente, persönliche Daten geschwärzt.`,
+  doc1: `Arztbrief<br>Prof. Dr. Dr. Christian Franke`, doc2: `DBS-Empfehlung`, doc3: `DAT-Scan-Befund`,
+  doc4: `Kostenvoranschlag der Klinik <span class="ph">(folgt)</span>`,
+  docs_note: `Dokumente werden nur mit Mihais schriftlicher Zustimmung veröffentlicht, persönliche Daten werden geschwärzt.`,
+  how_h2: `Wie das Geld ankommt`,
+  how_c1_h3: `Eigenes Konto`,
+  how_c1_a: `Das Geld fließt auf ein Konto, das nur für diesen Zweck genutzt wird`,
+  how_ong_pre: `, über die Partner-NGO `,
+  how_c1_b: `. Wo möglich, geht die Zahlung direkt an die Klinik.`,
+  how_c2_h3: `Wenn mehr zusammenkommt`,
+  how_c2_p: `Ein Überschuss deckt Nachjustierungen und Kontrollen der nächsten Jahre. Was darüber hinausgeht, geht transparent an einen anderen Parkinson-Patienten.`,
+  how_note: `Wir veröffentlichen regelmäßig, was eingegangen und ausgegeben wurde.`,
+  faq_h2: `Häufige Fragen`,
+  faq1_q: `Warum zahlt der Staat die Operation nicht?`,
+  faq1_a: `DBS wird in Rumänien selten durchgeführt, in wenigen Zentren, mit langen Wartelisten. Die Kostenübernahme im Ausland über CNAS (Formular S2/E112) ist ein langsames Verfahren mit ungewissem Ausgang. Wir stellen den CNAS-Antrag parallel und veröffentlichen den Bescheid hier; öffentlich erbitten wir nur den ungedeckten Teil.`,
+  faq2_q: `Wo landet mein Geld?`,
+  faq2_a: `Nur in Mihais Operation und den direkt damit verbundenen Kosten. Das Konto dient allein der Kampagne, die Beträge werden öffentlich berichtet.`,
+  faq3_q: `Woher weiß ich, dass das echt ist?`,
+  faq3_a: `Mihai Carapcea ist Rechtsanwalt in Brașov, mit öffentlicher Tätigkeit und Presseberichten — siehe oben. Sie können vor einer Spende anrufen oder schreiben.`,
+  faq4_q: `Kann meine Firma spenden? Ist das absetzbar?`,
+  faq4_a: `Ja. Über ein Sponsoring an die Partner-NGO ist der Betrag im gesetzlichen Rahmen von der Gewinnsteuer absetzbar (20 % der Steuer / 0,75 % des Umsatzes — rumänisches Recht). Schreiben Sie uns an `,
+  faq4_b: ` — wir bereiten den Vertrag vor.`,
+  faq5_q: `Kann ich 3,5 % meiner Einkommensteuer umleiten?`,
+  faq5_a: `Ja — über das Formular 230 (für Steuerzahler in Rumänien), kostenlos. Details unter `,
+  faq5_b: `.`,
+  donate_h2: `So können Sie helfen`,
+  donate_lead: `Jeder Betrag hilft. Wenn Sie nicht spenden können, teilen Sie die Seite.`,
+  rev_p: `Direkt aus der App, ohne Gebühren.`,
+  bank_h3: `Überweisung`,
+  titular_label: `Kontoinhaber:`,
+  titular_soon: `wird in Kürze bekannt gegeben`,
+  iban_soon: `Die Kampagnenkonten veröffentlichen wir hier in Kürze.`,
+  firms_note: `Für Firmen (absetzbares Sponsoring) und Formular 230: `,
+  email_soon_long: `Kontaktadresse (folgt in Kürze)`,
+  email_soon_short: `Kontakt folgt`,
+  soon: `folgt in Kürze`,
+  copy_btn: `Kopieren`, copied: `Kopiert`, copy_link: `Link kopieren`,
+  share_h3: `Sie können nicht spenden? Geben Sie es weiter.`,
+  share_p: `Schicken Sie die Seite einem Freund oder in eine Gruppe. Es zählt mehr, als Sie denken.`,
+  contact_h2: `Kontakt und Transparenz`,
+  c1_h3: `Kontakt`, phone_label: `Telefon:`,
+  c2_h3: `Verwaltung`, dedicated_acc: `Eigenes Kampagnenkonto`,
+  c3_h3: `Berichte`,
+  c3_p: `Wir veröffentlichen regelmäßig Einnahmen und Ausgaben sowie den Nachweis der Operation.`,
+  footer_note: `Geschichte und Diagnose sind echt. Computergenerierte Illustrationen sind als solche gekennzeichnet. Persönliche und medizinische Daten werden mit Mihais Einverständnis gemäß DSGVO verwendet. © 2026 · pentru-mihai.ro`,
+  share_text: `Mihai Carapcea, Rechtsanwalt aus Brașov, kämpft gegen Parkinson und braucht eine DBS-Operation. Helfen Sie ihm, auch diesen Prozess zu gewinnen: `
+},
+ru: {
+  title: `Помогите Михаю выиграть и этот процесс — Адвокат против Паркинсона`,
+  nav_story: `История`, nav_video: `Видео`, nav_budget: `Бюджет`, nav_faq: `Вопросы`,
+  donate: `Помочь`,
+  hero_tag: `Адвокат против Паркинсона`,
+  hero_h1: `20 лет он защищал людей в суде. Теперь его должны защитить мы.`,
+  hero_sub: `Михай Карапча — адвокат из Брашова и отец двоих детей. У него болезнь Паркинсона с ранним началом. Врачи <strong>срочно</strong> рекомендуют операцию глубокой стимуляции мозга (DBS). Она стоит около <strong>100 000 €</strong> — одному такую сумму не собрать.`,
+  campaign_start: `Кампания только начинается`,
+  goal_label: `цель`,
+  first_donors: `Станьте одним из первых, кто поможет.`,
+  donors_line: `{n} человек · {pct}%`,
+  updated_label: `обновлено`,
+  cta_donate_op: `Помочь оплатить операцию`,
+  cta_revolut: `Помочь через Revolut`,
+  share_btn: `Поделиться`,
+  trustrow: `Открытый бюджет · медицинские документы · публикации в прессе — всё на этой странице.`,
+  portrait_cap: `Михай Карапча · адвокат · Брашов`,
+  vc_h2: `Его история за две минуты`,
+  vc_placeholder: `Видео сейчас снимается и появится здесь. А пока историю рассказывают интервью ниже.`,
+  story_h2: `Моя история`,
+  story_lead: `Словами самого Михая.`,
+  story_p1: `Двадцать лет я бегал из одного зала суда в другой и думал, что меня ничто не остановит. А в 36 лет жизнь остановила меня сама. Диагноз: <strong>Паркинсон</strong>.`,
+  story_p2: `Я живу от приёма до приёма лекарств — по четыре-пять раз в день. Они не лечат, а лишь на несколько часов сдерживают симптомы. Каждый день — борьба: с собой, с болезнью, со взглядами окружающих.`,
+  story_p3: `Чего болезнь у меня не отняла — это <strong>разум</strong>. А в адвокатуре разум решает всё. Профессия держит меня живым, собранным, нужным.`,
+  story_quote: `«У меня Паркинсон. Но я не у Паркинсона».`,
+  who_h2: `Кто такой Михай`,
+  who_lead: `Адвокат из Брашова, почти 20 лет практики в банковском праве и защите прав потребителей.`,
+  who_c1_h3: `Его практика`,
+  who_c1_p: `Выигрывал процессы против банков для людей, попавших в кабальные договоры, — в том числе в Высшем кассационном суде Румынии.`,
+  who_c2_h3: `В прессе`,
+  videos_h2: `Послушайте Михая`,
+  videos_lead: `Интервью (на румынском), где он открыто говорит о болезни и о профессии.`,
+  v1_t: `Жизнь с Паркинсоном`, v2_t: `Банковские кредитные договоры`, v3_t: `ИИ в юриспруденции`, v4_t: `Права граждан`,
+  dbs_h2: `Что это за операция и почему сейчас`,
+  dbs_lead: `Глубокая стимуляция мозга (DBS) — лечение, рекомендованное специалистами.`,
+  dbs_p1: `При DBS имплантируют нейростимулятор, который посылает импульсы в зоны мозга, управляющие движением. Это уменьшает тремор, скованность и «застывания». Это не экспериментальная процедура — её назначают, когда лекарства уже не справляются.`,
+  dbs_p2: `Болезнь у Михая прогрессирует: моторные флуктуации, «застывания». Неврологи — в том числе <strong>проф. д-р Кристиан Франке (Мюнхен, июнь 2026)</strong> — говорят, что подходящее окно для операции — сейчас. Промедление стоит того, что труднее всего вернуть: качества жизни.`,
+  dbs_note: `Иллюстрация. Михай молод, реагирует на леводопу, когнитивно сохранен — профиль с наилучшим соотношением пользы и риска для DBS.`,
+  budget_h2: `На что пойдут деньги`,
+  budget_lead: `Цифры предварительные; обновим их после окончательной сметы клиники.`,
+  b_cat: `Статья`, b_est: `Оценка`,
+  b_r1: `Операция DBS + имплант (медицинская часть)`, b_r2: `Нейростимулятор / устройство`, b_r2v: `включено`,
+  b_r3: `Предоперационные обследования + визуализация`, b_r4: `Дорога + проживание (пациент + сопровождающий)`,
+  b_r5: `Поездки на настройку (первый год)`, b_r6: `Реабилитация / физиотерапия`, b_r7: `Резерв (замена батареи, осложнения)`,
+  b_tot: `Итого (оценка)`,
+  b_warn: `<strong>Чистая цель</strong> = полная стоимость минус часть, которую покроет румынская касса CNAS / форма S2. Смету клиники и ответ CNAS опубликуем здесь, как только получим.`,
+  docs_h2: `Медицинские документы`,
+  docs_lead: `Диагноз и рекомендации — настоящие документы, личные данные скрыты.`,
+  doc1: `Медицинское заключение<br>проф. Кристиан Франке`, doc2: `Рекомендация DBS`, doc3: `Подтверждение DAT-скана`,
+  doc4: `Смета клиники <span class="ph">(скоро)</span>`,
+  docs_note: `Документы публикуются только с письменного согласия Михая, личные данные закрыты.`,
+  how_h2: `Куда идут деньги`,
+  how_c1_h3: `Отдельный счёт`,
+  how_c1_a: `Деньги поступают на счёт, который используется только для этой цели`,
+  how_ong_pre: ` — через партнёрскую НКО `,
+  how_c1_b: `. Где возможно, оплата идёт напрямую в клинику.`,
+  how_c2_h3: `Если соберётся больше`,
+  how_c2_p: `Излишек пойдёт на настройки и обследования в следующие годы. Всё сверх необходимого — прозрачно — другому пациенту с Паркинсоном.`,
+  how_note: `Мы регулярно публикуем, сколько собрано и потрачено.`,
+  faq_h2: `Частые вопросы`,
+  faq1_q: `Почему операцию не оплачивает государство?`,
+  faq1_a: `В Румынии DBS делают редко, в немногих центрах и с длинными очередями. Возмещение за границей через CNAS (форма S2/E112) — медленная процедура с неясным исходом. Параллельно мы подаём заявку в CNAS и опубликуем ответ здесь; публично мы просим только непокрытую часть.`,
+  faq2_q: `Куда пойдут мои деньги?`,
+  faq2_a: `Только на операцию Михая и напрямую связанные с ней расходы. Счёт выделен под кампанию, суммы публикуются открыто.`,
+  faq3_q: `Откуда мне знать, что это правда?`,
+  faq3_a: `Михай Карапча — практикующий адвокат из Брашова, о нём писала пресса, есть публичные выступления — всё выше на странице. Перед пожертвованием можно позвонить или написать.`,
+  faq4_q: `Может ли пожертвовать компания? Есть ли вычет?`,
+  faq4_a: `Да. Через спонсорство партнёрской НКО сумма вычитается из налога на прибыль в законных пределах (20 % налога / 0,75 % оборота — по румынским правилам). Напишите нам: `,
+  faq4_b: ` — подготовим договор.`,
+  faq5_q: `Могу ли я перенаправить 3,5 % подоходного налога?`,
+  faq5_a: `Да — через форму 230 (для налогоплательщиков Румынии), это ничего не стоит. Подробности: `,
+  faq5_b: `.`,
+  donate_h2: `Как помочь`,
+  donate_lead: `Поможет любая сумма. Не можете пожертвовать — поделитесь страницей.`,
+  rev_p: `Прямо из приложения, без комиссии.`,
+  bank_h3: `Банковский перевод`,
+  titular_label: `Получатель:`,
+  titular_soon: `объявим в ближайшее время`,
+  iban_soon: `Реквизиты счётов кампании появятся здесь в ближайшее время.`,
+  firms_note: `Для компаний (спонсорство с вычетом) и формы 230: `,
+  email_soon_long: `адрес для связи (скоро опубликуем)`,
+  email_soon_short: `контакт скоро`,
+  soon: `скоро`,
+  copy_btn: `Копировать`, copied: `Скопировано`, copy_link: `Скопировать ссылку`,
+  share_h3: `Не можете пожертвовать? Передайте дальше.`,
+  share_p: `Отправьте страницу другу или в чат. Это важнее, чем кажется.`,
+  contact_h2: `Контакты и прозрачность`,
+  c1_h3: `Контакты`, phone_label: `Телефон:`,
+  c2_h3: `Управление средствами`, dedicated_acc: `Отдельный счёт кампании`,
+  c3_h3: `Отчётность`,
+  c3_p: `Мы регулярно публикуем собранные и потраченные суммы, а также подтверждение операции.`,
+  footer_note: `История и диагноз настоящие. Сгенерированные на компьютере иллюстрации помечены. Личные и медицинские данные используются с согласия Михая, в соответствии с GDPR. © 2026 · pentru-mihai.ro`,
+  share_text: `Михай Карапча, адвокат из Брашова, борется с Паркинсоном, ему нужна операция DBS. Помогите ему выиграть и этот процесс: `
+}
+};
+
 (function(){
   const $  = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
-  const fmt = n => n.toLocaleString('ro-RO');
+  const LANGS = ['ro','en','de','ru'];
+  const LOCALES = {ro:'ro-RO', en:'en-IE', de:'de-DE', ru:'ru-RU'};
 
-  /* ---- completează pagina din CONFIG ---- */
-  // linkuri (Revolut, Instagram, Facebook, TikTok): apar doar dacă sunt setate
-  $$('[data-cfg-link]').forEach(el=>{
-    const v = (CONFIG[el.dataset.cfgLink]||'').trim();
-    if(v){ el.href = v; el.hidden = false; }
-    else { el.hidden = true; }
-  });
-  // texte simple
-  $$('[data-cfg]').forEach(el=>{
-    const v = (CONFIG[el.dataset.cfg]||'').toString().trim();
-    if(v) el.textContent = v;
-  });
-  // blocuri care există doar dacă valoarea e setată
-  $$('[data-cfg-req]').forEach(el=>{
-    if(!(CONFIG[el.dataset.cfgReq]||'').toString().trim()) el.hidden = true;
-  });
-  // blocuri care dispar când valoarea E setată (mesaje "în curând")
-  $$('[data-cfg-req-hidden]').forEach(el=>{
-    if((CONFIG[el.dataset.cfgReqHidden]||'').toString().trim()) el.hidden = true;
-  });
-  // ONG (fraza întreagă)
-  const ongSpan = $('[data-cfg-ong]');
-  if(ongSpan && !(CONFIG.ong||'').trim()) ongSpan.hidden = true;
-  // fără Revolut, cardul de transfer bancar ocupă tot rândul
-  if(!(CONFIG.revolut||'').trim()){
-    const g = $('#doneaza .grid.two'); if(g) g.style.gridTemplateColumns = '1fr';
+  // limba inițială: ?lang= → alegerea salvată → limba browserului → ro
+  let LANG = 'ro';
+  try{
+    const q = new URLSearchParams(location.search).get('lang');
+    const saved = localStorage.getItem('lang');
+    const nav = (navigator.languages || [navigator.language || 'ro']).map(l => String(l).slice(0,2).toLowerCase());
+    LANG = LANGS.includes(q) ? q : LANGS.includes(saved) ? saved : (nav.find(l => LANGS.includes(l)) || 'ro');
+  }catch(e){}
+
+  const t = k => (I18N[LANG] && I18N[LANG][k]) != null ? I18N[LANG][k] : I18N.ro[k];
+  const fmt = n => n.toLocaleString(LOCALES[LANG]);
+
+  const pageUrl = location.protocol === 'file:' ? 'https://pentru-mihai.ro/' : location.origin + '/';
+  let videoBuilt = false;
+
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = t('title');
+    $$('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+    $$('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+
+    /* ---- CONFIG peste traduceri ---- */
+    $$('[data-cfg-link]').forEach(el=>{
+      const v = (CONFIG[el.dataset.cfgLink]||'').trim();
+      if(v){ el.href = v; el.hidden = false; } else { el.hidden = true; }
+    });
+    $$('[data-cfg]').forEach(el=>{
+      const v = (CONFIG[el.dataset.cfg]||'').toString().trim();
+      if(v) el.textContent = v;
+    });
+    $$('[data-cfg-req]').forEach(el=>{
+      if(!(CONFIG[el.dataset.cfgReq]||'').toString().trim()) el.hidden = true;
+    });
+    $$('[data-cfg-req-hidden]').forEach(el=>{
+      if((CONFIG[el.dataset.cfgReqHidden]||'').toString().trim()) el.hidden = true;
+    });
+    const ongSpan = $('[data-cfg-ong]');
+    if(ongSpan && !(CONFIG.ong||'').trim()) ongSpan.hidden = true;
+    if(!(CONFIG.revolut||'').trim()){
+      const g = $('#doneaza .grid.two'); if(g) g.style.gridTemplateColumns = '1fr';
+    }
+
+    /* ---- progres ---- */
+    const goal = CONFIG.goal || 100000;
+    $('#goalTxt').textContent = t('goal_label') + ': ' + fmt(goal) + ' €';
+    if(CONFIG.raised != null){
+      $('#raisedTxt').textContent = fmt(CONFIG.raised) + ' €';
+      const pct = Math.min(100, Math.round(CONFIG.raised/goal*100));
+      requestAnimationFrame(()=>{ $('#barFill').style.width = pct + '%'; });
+      if(CONFIG.donatori != null) $('#donorsTxt').textContent = t('donors_line').replace('{n}', fmt(CONFIG.donatori)).replace('{pct}', pct);
+      else $('#donorsTxt').textContent = '';
+      $('#updatedTxt').textContent = CONFIG.actualizat ? (t('updated_label') + ': ' + CONFIG.actualizat) : '';
+    } else {
+      $('#raisedTxt').textContent = t('campaign_start');
+      $('#donorsTxt').textContent = t('first_donors');
+      $('#barFill').style.width = '3%';
+    }
+
+    /* ---- video campanie ---- */
+    if((CONFIG.videoCampanie||'').trim() && !videoBuilt){
+      $('#heroVideoSlot').innerHTML =
+        '<div class="yt" data-id="'+CONFIG.videoCampanie+'" role="button" tabindex="0" aria-label="Video">'+
+        '<img src="https://i.ytimg.com/vi/'+CONFIG.videoCampanie+'/maxresdefault.jpg" alt="">'+
+        '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>';
+      bindYt($('#heroVideoSlot .yt'));
+      videoBuilt = true;
+    }
+
+    /* ---- share ---- */
+    $('#shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(t('share_text') + pageUrl);
+    $('#shareFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
   }
 
-  // progres
-  const goal = CONFIG.goal || 100000;
-  $('#goalTxt').textContent = 'țintă: ' + fmt(goal) + ' €';
-  if(CONFIG.raised != null){
-    $('#raisedTxt').textContent = fmt(CONFIG.raised) + ' €';
-    const pct = Math.min(100, Math.round(CONFIG.raised/goal*100));
-    requestAnimationFrame(()=>{ $('#barFill').style.width = pct + '%'; });
-    if(CONFIG.donatori != null) $('#donorsTxt').textContent = fmt(CONFIG.donatori) + ' donatori · ' + pct + '%';
-    if(CONFIG.actualizat) $('#updatedTxt').textContent = 'actualizat: ' + CONFIG.actualizat;
-  } else {
-    $('#barFill').style.width = '3%';
-  }
-
-  // video campanie (când există ID, înlocuiește placeholderul)
-  if((CONFIG.videoCampanie||'').trim()){
-    $('#heroVideoSlot').innerHTML =
-      '<div class="yt" data-id="'+CONFIG.videoCampanie+'" role="button" tabindex="0" aria-label="Redă videoclipul campaniei">'+
-      '<img src="https://i.ytimg.com/vi/'+CONFIG.videoCampanie+'/maxresdefault.jpg" alt="">'+
-      '<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>';
-    bindYt($('#heroVideoSlot .yt'));
-  }
-
-  /* ---- youtube „lite embed": iframe-ul se încarcă doar la click ---- */
+  /* ---- youtube „lite embed" ---- */
   function playYt(box){
     const id = box.dataset.id;
-    box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Video YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
   }
   function bindYt(box){
     box.addEventListener('click', ()=>playYt(box));
@@ -573,15 +998,19 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
   }
   $$('.yt').forEach(bindYt);
 
-  /* ---- share ---- */
-  const pageUrl = location.protocol === 'file:' ? 'https://pentru-mihai.ro/' : location.origin + '/';
-  const shareText = 'Mihai Carapcea, avocat din Brașov, luptă cu Parkinson și are nevoie de operația DBS. Ajută-l să câștige și acest proces: ';
-  $('#shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + pageUrl);
-  $('#shareFb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+  /* ---- comutator de limbă ---- */
+  $$('.lang button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      LANG = b.dataset.lang;
+      try{ localStorage.setItem('lang', LANG); }catch(e){}
+      applyLang();
+    });
+  });
 
+  /* ---- share nativ + copiere ---- */
   function nativeShare(){
     if(navigator.share){
-      navigator.share({title:'Ajută-l pe Mihai', text:shareText, url:pageUrl}).catch(()=>{});
+      navigator.share({title: t('title'), text: t('share_text'), url: pageUrl}).catch(()=>{});
     } else {
       copyLink($('#shareCopy span'));
       location.hash = '#doneaza';
@@ -589,22 +1018,21 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
   }
   function copyLink(label){
     navigator.clipboard.writeText(pageUrl).then(()=>{
-      if(label){ const t = label.textContent; label.textContent = 'Copiat'; setTimeout(()=>label.textContent = t, 2000); }
+      if(label){ label.textContent = t('copied'); setTimeout(()=>{ label.textContent = t('copy_link'); }, 2000); }
     });
   }
   $('#shareHero').addEventListener('click', nativeShare);
   $('#shareMobile').addEventListener('click', nativeShare);
   $('#shareCopy').addEventListener('click', ()=>copyLink($('#shareCopy span')));
 
-  // copiere IBAN
   $$('.copybtn[data-copy]').forEach(b=>{
     b.addEventListener('click', ()=>{
       navigator.clipboard.writeText((CONFIG[b.dataset.copy]||'').replace(/\s+/g,''));
-      const t = b.textContent; b.textContent = 'Copiat'; setTimeout(()=>b.textContent = t, 2000);
+      b.textContent = t('copied'); setTimeout(()=>{ b.textContent = t('copy_btn'); }, 2000);
     });
   });
 
-  /* ---- bara CTA pe mobil: apare după hero ---- */
+  /* ---- bara CTA pe mobil ---- */
   const bar = $('#mobileCta');
   const hero = $('.hero');
   if('IntersectionObserver' in window){
@@ -626,6 +1054,8 @@ footer{padding:36px 0 110px;color:var(--muted);font-size:.85rem}
     const saved = localStorage.getItem('theme');
     if(saved) document.documentElement.setAttribute('data-theme', saved);
   }catch(e){}
+
+  applyLang();
 })();
 </script>
 </body>
